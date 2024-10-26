@@ -1,0 +1,15 @@
+# Ignorar diretórios e arquivos de instalação do Node.js
+node_modules/
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar arquivos de configuração de ambiente
+.env
+
+# Ignorar arquivos gerados pelo sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivos de banco de dados SQLite
+*.sqlite
