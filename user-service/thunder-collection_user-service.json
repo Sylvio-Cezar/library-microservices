@@ -1,0 +1,52 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "user-service",
+    "collectionId": "8bbeee25-dfdd-4fe2-9801-33db89d37468",
+    "dateExported": "2024-11-03T22:05:07.029Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "401dd277-a4a5-4758-adc0-cf7c10cc94dc",
+            "colId": "8bbeee25-dfdd-4fe2-9801-33db89d37468",
+            "containerId": "",
+            "name": "/status",
+            "url": "http://localhost:3000/status",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-11-03T21:46:15.374Z",
+            "modified": "2024-11-03T21:46:25.784Z",
+            "headers": []
+        },
+        {
+            "_id": "a954f5fd-82eb-4699-852c-b374d97a0915",
+            "colId": "8bbeee25-dfdd-4fe2-9801-33db89d37468",
+            "containerId": "",
+            "name": "/users",
+            "url": "http://localhost:3000/users",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-11-03T21:46:34.295Z",
+            "modified": "2024-11-03T21:46:45.099Z",
+            "headers": []
+        },
+        {
+            "_id": "c27fc4ab-f8bf-415b-af1c-a44879e99a69",
+            "colId": "8bbeee25-dfdd-4fe2-9801-33db89d37468",
+            "containerId": "",
+            "name": "/users",
+            "url": "http://localhost:3000/users",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-11-03T21:46:54.165Z",
+            "modified": "2024-11-03T22:03:32.365Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Usuario Teste\",\n  \"email\": \"teste@teste.com\",\n  \"cpf\": \"11122233344\",\n  \"birthdate\": \"2000-01-01\"\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "2I_EMMIgzUM8OoCNOHJs_Kehy2VrY9gD-2AskhdeyjAi-FfagGK_x6yzLbjq2C4vOkmFfupus3wAE5Lf3W_tMQ"
+}
