@@ -17,6 +17,8 @@ router.get('/users/:id', async (req, res) => {
         console.error('Erro ao buscar usuário:', error);
         res.status(500).json({ error: 'Erro interno do servidor' });
     }
+
+    //#swagger.tags = ['Users']
 });
 
 module.exports = router;
