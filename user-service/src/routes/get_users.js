@@ -14,6 +14,7 @@ router.get("/users", async (req, res) => {
         res.send([])
     }
 
+    // #swagger.tags = ['Users']
 });
 
 module.exports=router;
