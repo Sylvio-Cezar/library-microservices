@@ -2,7 +2,7 @@
 
 - Clone o repositório
     ```cmd
-    git clone https://github.com/Sylvio-Cezar/library-microservices/tree/RotaGetUserID
+    git clone https://github.com/Sylvio-Cezar/library-microservices.git
     ```
 
 - Navegue até o diretório
