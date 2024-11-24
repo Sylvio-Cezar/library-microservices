@@ -9,16 +9,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user: {
-        type: Sequelize.STRING
+      user_id: {
+        type: Sequelize.INTEGER
       },
-      book: {
-        type: Sequelize.STRING
+      book_id: {
+        type: Sequelize.INTEGER
       },
       loan_date: {
         type: Sequelize.DATE
       },
-      return_data: {
+      return_date: {
         type: Sequelize.DATE
       },
       createdAt: {

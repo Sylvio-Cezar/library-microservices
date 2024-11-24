@@ -14,10 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Loan.init({
-    user: DataTypes.STRING,
-    book: DataTypes.STRING,
+    user_id: DataTypes.INTEGER,
+    book_id: DataTypes.INTEGER,
     loan_date: DataTypes.DATE,
-    return_data: DataTypes.DATE
+    return_date: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'Loan',
