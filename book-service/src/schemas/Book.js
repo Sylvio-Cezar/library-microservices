@@ -7,12 +7,12 @@ book = z.object({
 
     author: z
         .string({ message:"Campo obrigatório" })
-        .email("E-mail inválido"),
+        .min(3, "Mínimo 3 caracteres"),
 
     available: z
         .boolean({ message: "Campo obrigatório" })
         .refine(value => typeof value === 'boolean', {
-        message: "Capo de disponivel ou não (true ou false)",
+        message: "Campo de disponivel ou não (true ou false)",
         })
 });
 
