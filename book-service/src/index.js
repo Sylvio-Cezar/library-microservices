@@ -6,6 +6,7 @@ const port = 3001;
 
 const post_books_router = require('./routes/post_books');
 const get_books_router = require('./routes/get_books');
+const get_books_id_router = require('./routes/get_books_id');
 
 
 app.use(express.json());
@@ -14,6 +15,7 @@ app.use("/docs", swaggerUIPath.serve, swaggerUIPath.setup(swaggerjsonFilePath));
 
 app.use(post_books_router);
 app.use(get_books_router);
+app.use(get_books_id_router);
 
 app.get('/status', (req, res) => {
     res.status(200);
