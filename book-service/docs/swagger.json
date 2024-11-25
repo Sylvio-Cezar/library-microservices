@@ -1,0 +1,153 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de Livros",
+    "version": "1.0.0",
+    "description": "API para gerenciar livros na biblioteca."
+  },
+  "paths": {
+    "/books": {
+      "get": {
+        "summary": "Listar todos os livros",
+        "tags": ["Books"],
+        "responses": {
+          "200": {
+            "description": "Lista de livros",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Book"
+                  }
+                },
+                "example": [
+                  {
+                    "id": 1,
+                    "name": "O Senhor dos Anéis",
+                    "author": "J.R.R. Tolkien",
+                    "available": true
+                  },
+                  {
+                    "id": 2,
+                    "name": "1984",
+                    "author": "George Orwell",
+                    "available": false
+                  }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Cadastrar um novo livro",
+        "tags": ["Books"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Book"
+              },
+              "example": {
+                "name": "A Jornada do Herói",
+                "author": "Joseph Campbell",
+                "available": true
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Livro cadastrado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Book"
+                },
+                "example": {
+                  "id": 3,
+                  "name": "A Jornada do Herói",
+                  "author": "Joseph Campbell",
+                  "available": true
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na requisição",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "message": "Campo 'name' é obrigatório."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/status": {
+      "get": {
+        "summary": "Verificar o status da API",
+        "tags": ["Server"],
+        "responses": {
+          "200": {
+            "description": "API está funcionando",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "OK"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Book": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID do livro",
+            "example": 1
+          },
+          "name": {
+            "type": "string",
+            "description": "Nome do livro",
+            "example": "O Senhor dos Anéis"
+          },
+          "author": {
+            "type": "string",
+            "description": "Nome do autor",
+            "example": "J.R.R. Tolkien"
+          },
+          "available": {
+            "type": "boolean",
+            "description": "Disponibilidade do livro",
+            "example": true
+          }
+        }
+      }
+    }
+  }
+}

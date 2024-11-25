@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/users/:id', async (req, res) => {
     const userId = req.params.id;
     try {
-        const user = await User.findByPk(userId); 
+        const user = await User.findByPk(userId);
 
         if (!user) {
             return res.status(404).json({ error: 'Usuário não encontrado' });
