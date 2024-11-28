@@ -26,4 +26,10 @@ async function checkLoanAvailability(bookId, userId) {
     }
 }
 
-module.exports = { checkLoanAvailability };
+async function changeBookAvailability(bookId) {
+    await axios.patch(`http://localhost:3001/books/${bookId}`, {
+        available: true
+    });
+}
+
+module.exports = { checkLoanAvailability, changeBookAvailability };
