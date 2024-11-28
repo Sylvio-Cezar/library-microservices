@@ -7,9 +7,9 @@ const auth = require('../services/auth.service');
 router.post('/loans', async (req, res) => {
     try {
         const validatedLoan = loanSchema.parse(req.body);
-        const newLoan = await Loan.create(validatedLoan);
-        const canLoan = await auth.checkLoanAvailability(newLoan.book_id, newLoan.user_id);
+        const canLoan = await auth.checkLoanAvailability(validatedLoan.book_id, validatedLoan.user_id);
         if (canLoan) {
+            const newLoan = await Loan.create(validatedLoan);
             return res.status(201).send(newLoan); 
         } else {
             res.status(401).send("Livro e/ou usuário indisponível.")
