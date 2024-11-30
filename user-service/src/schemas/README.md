@@ -1,1 +1,0 @@
-Diretório com os schemas do zod

@@ -2,12 +2,12 @@
   "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
-    "title": "Usuário API",
-    "description": "API para gerenciamento de Usuários"
+    "title": "Livro API",
+    "description": "API para gerenciamento de Livros"
   },
   "servers": [
     {
-      "url": "http://localhost:3000/"
+      "url": "http://localhost:3001/"
     }
   ],
   "securityDefinitions": {},
@@ -38,10 +38,10 @@
         }
       }
     },
-    "/users": {
+    "/books": {
       "post": {
         "tags": [
-          "Users"
+          "Books"
         ],
         "description": "",
         "responses": {
@@ -57,7 +57,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/userBody"
+                "$ref": "#/components/schemas/bookBody"
               }
             }
           }
@@ -65,20 +65,23 @@
       },
       "get": {
         "tags": [
-          "Users"
+          "Books"
         ],
         "description": "",
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
-    "/users/{id}": {
+    "/books/{id}": {
       "get": {
         "tags": [
-          "Users"
+          "Books"
         ],
         "description": "",
         "parameters": [
@@ -102,36 +105,83 @@
             "description": "Internal Server Error"
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "Books"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/patchBookBody"
+              }
+            }
+          }
+        }
       }
     }
   },
   "components": {
     "schemas": {
-      "userBody": {
+      "patchBookBody": {
+        "type": "object",
+        "properties": {
+          "available": {
+            "type": "boolean",
+            "example": false
+          }
+        },
+        "required": [
+          "available"
+        ]
+      },
+      "bookBody": {
         "type": "object",
         "properties": {
           "name": {
             "type": "string",
-            "example": "Usuario Teste"
+            "example": "O Senhor dos Anéis"
           },
-          "email": {
+          "author": {
             "type": "string",
-            "example": "teste@teste.com"
+            "example": "J.R.R. Tolkien"
           },
-          "cpf": {
-            "type": "string",
-            "example": "11122233344"
-          },
-          "birthdate": {
-            "type": "string",
-            "example": "2000-01-01"
+          "available": {
+            "type": "boolean",
+            "example": true
           }
         },
         "required": [
           "name",
-          "email",
-          "cpf",
-          "birthdate"
+          "author",
+          "available"
         ]
       }
     }

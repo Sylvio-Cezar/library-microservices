@@ -5,14 +5,17 @@ const router = express.Router();
 
 router.post('/users', async (req, res) => {
     try {
-        const validatedUser = userSchema.parse(req.body); 
-        const newUser = await User.create(validatedUser); 
-        return res.status(201).send(newUser); 
+        const validatedUser = userSchema.parse(req.body);
+        const newUser = await User.create(validatedUser);
+        return res.status(201).send(newUser);
     } catch (error) {
         console.error('Erro ao cadastrar usuário:', error);
+        if (error.name === 'SequelizeUniqueConstraintError'){
+            return res.status(400).json({ error: `Usuário com esse CPF já foi cadastrado` });
+        }
         return res.status(400).json({ error: error.message });
     }
-    
+
     /*
         #swagger.tags = ['Users']
         #swagger.requestBody = {
@@ -21,7 +24,7 @@ router.post('/users', async (req, res) => {
                 "application/json": {
                     schema: {
                         $ref: "#/components/schemas/userBody"
-                    }  
+                    }
                 }
             }
         }
