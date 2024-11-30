@@ -25,6 +25,19 @@
         }
       }
     },
+    "/": {
+      "get": {
+        "tags": [
+          "Server"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/books": {
       "post": {
         "tags": [

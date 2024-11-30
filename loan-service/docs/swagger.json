@@ -25,6 +25,19 @@
         }
       }
     },
+    "/": {
+      "get": {
+        "tags": [
+          "Server"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/loans": {
       "post": {
         "tags": [
@@ -38,8 +51,8 @@
           "400": {
             "description": "Bad Request"
           },
-          "401": {
-            "description": "Unauthorized"
+          "404": {
+            "description": "Not Found"
           }
         },
         "requestBody": {

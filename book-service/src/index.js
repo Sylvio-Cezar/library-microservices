@@ -26,6 +26,17 @@ app.get('/status', (req, res) => {
     // #swagger.tags = ['Server']
 });
 
+app.get('/', (req, res) => {
+    res.status(200);
+    res.send(`
+        <p>Serviço de Livros disponível</p>
+        <p>Para informações das rotas consulte:</p>
+        <a href="http://localhost:${port}/docs">http://localhost:${port}/docs</a>
+    `);
+
+    // #swagger.tags = ['Server']
+});
+
 app.listen(port, () => {
-    console.info(`Servidor rodando na porta ${port}`);
+    console.info(`Servidor inicializado: http://localhost:${port}`);
 });
