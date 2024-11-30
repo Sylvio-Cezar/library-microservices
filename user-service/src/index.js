@@ -26,7 +26,7 @@ app.get('/status', (req, res) => {
 app.get('/', (req, res) => {
     res.status(200);
     res.send(`
-        <p>Serviço de Livros disponível</p>
+        <p>Serviço de Usuários disponível</p>
         <p>Para informações das rotas consulte:</p>
         <a href="http://localhost:${port}/docs">http://localhost:${port}/docs</a>
     `);
