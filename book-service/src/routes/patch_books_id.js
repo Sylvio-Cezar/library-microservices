@@ -27,7 +27,19 @@ router.patch('/books/:id', async (req, res) => {
         res.status(500).json({ error: 'Erro interno do servidor' });
     }
 
-    //#swagger.tags = ['Books']
+    /*
+        #swagger.tags = ['Books']
+        #swagger.requestBody = {
+            required: true,
+            content: {
+                "application/json": {
+                    schema: {
+                        $ref: "#/components/schemas/patchBookBody"
+                    }
+                }
+            }
+        }
+    */
 });
 
 module.exports = router;

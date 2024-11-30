@@ -1,0 +1,124 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Empréstimo API",
+    "description": "API para gerenciamento de Empréstimos"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3002/"
+    }
+  ],
+  "securityDefinitions": {},
+  "paths": {
+    "/status": {
+      "get": {
+        "tags": [
+          "Server"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/loans": {
+      "post": {
+        "tags": [
+          "Loans"
+        ],
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/loanBody"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Loans"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/loans/{id}/return": {
+      "post": {
+        "tags": [
+          "Loans"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "loanBody": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "number",
+            "example": 1
+          },
+          "book_id": {
+            "type": "number",
+            "example": 1
+          },
+          "loan_date": {
+            "type": "string",
+            "example": "2024-12-02"
+          }
+        },
+        "required": [
+          "user_id",
+          "book_id",
+          "loan_date"
+        ]
+      }
+    }
+  }
+}

@@ -1,4 +1,6 @@
 const express = require('express');
+const swaggerUIPath= require('swagger-ui-express');
+const swaggerjsonFilePath = require('../docs/swagger.json');
 
 const app = express();
 const port = 3002;
@@ -9,14 +11,18 @@ const get_loans_router = require('./routes/get_loans');
 
 app.use(express.json());
 
-app.get('/status', (req, res) => {
-    res.status(200);
-    res.send("OK");
-});
+app.use("/docs", swaggerUIPath.serve, swaggerUIPath.setup(swaggerjsonFilePath));
 
 app.use(post_loans_router);
 app.use(post_loans_id_return_router);
 app.use(get_loans_router);
+
+app.get('/status', (req, res) => {
+    res.status(200);
+    res.send("OK");
+
+    // #swagger.tags = ['Server']
+});
 
 app.listen(port, ()=>{
     console.info("Servidor inicializado")
