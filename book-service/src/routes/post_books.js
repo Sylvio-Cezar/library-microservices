@@ -26,7 +26,19 @@ router.post("/books", async (req, res) => {
         });
     }
 
-    // #swagger.tags = ['Books']
+    /*
+        #swagger.tags = ['Books']
+        #swagger.requestBody = {
+            required: true,
+            content: {
+                "application/json": {
+                    schema: {
+                        $ref: "#/components/schemas/bookBody"
+                    }
+                }
+            }
+        }
+    */
 });
 
 module.exports = router;

@@ -1,119 +1,133 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "API de Livros",
     "version": "1.0.0",
-    "description": "API para gerenciar livros na biblioteca."
+    "title": "Livro API",
+    "description": "API para gerenciamento de Livros"
   },
+  "servers": [
+    {
+      "url": "http://localhost:3001/"
+    }
+  ],
+  "securityDefinitions": {},
   "paths": {
-    "/books": {
+    "/status": {
       "get": {
-        "summary": "Listar todos os livros",
-        "tags": ["Books"],
+        "tags": [
+          "Server"
+        ],
+        "description": "",
         "responses": {
           "200": {
-            "description": "Lista de livros",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Book"
-                  }
-                },
-                "example": [
-                  {
-                    "id": 1,
-                    "name": "O Senhor dos Anéis",
-                    "author": "J.R.R. Tolkien",
-                    "available": true
-                  },
-                  {
-                    "id": 2,
-                    "name": "1984",
-                    "author": "George Orwell",
-                    "available": false
-                  }
-                ]
-              }
-            }
+            "description": "OK"
           }
         }
-      },
+      }
+    },
+    "/books": {
       "post": {
-        "summary": "Cadastrar um novo livro",
-        "tags": ["Books"],
+        "tags": [
+          "Books"
+        ],
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Book"
-              },
-              "example": {
-                "name": "A Jornada do Herói",
-                "author": "Joseph Campbell",
-                "available": true
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Livro cadastrado com sucesso",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Book"
-                },
-                "example": {
-                  "id": 3,
-                  "name": "A Jornada do Herói",
-                  "author": "Joseph Campbell",
-                  "available": true
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Erro na requisição",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "message": {
-                      "type": "string"
-                    }
-                  },
-                  "example": {
-                    "message": "Campo 'name' é obrigatório."
-                  }
-                }
+                "$ref": "#/components/schemas/bookBody"
               }
             }
           }
         }
-      }
-    },
-    "/status": {
+      },
       "get": {
-        "summary": "Verificar o status da API",
-        "tags": ["Server"],
+        "tags": [
+          "Books"
+        ],
+        "description": "",
         "responses": {
           "200": {
-            "description": "API está funcionando",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "string",
-                      "example": "OK"
-                    }
-                  }
-                }
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/books/{id}": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Books"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/patchBookBody"
               }
             }
           }
@@ -123,30 +137,39 @@
   },
   "components": {
     "schemas": {
-      "Book": {
+      "patchBookBody": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "description": "ID do livro",
-            "example": 1
-          },
+          "available": {
+            "type": "boolean",
+            "example": false
+          }
+        },
+        "required": [
+          "available"
+        ]
+      },
+      "bookBody": {
+        "type": "object",
+        "properties": {
           "name": {
             "type": "string",
-            "description": "Nome do livro",
             "example": "O Senhor dos Anéis"
           },
           "author": {
             "type": "string",
-            "description": "Nome do autor",
             "example": "J.R.R. Tolkien"
           },
           "available": {
             "type": "boolean",
-            "description": "Disponibilidade do livro",
             "example": true
           }
-        }
+        },
+        "required": [
+          "name",
+          "author",
+          "available"
+        ]
       }
     }
   }

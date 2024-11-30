@@ -12,24 +12,22 @@ const generateSwagger = require("swagger-autogen")(options);
 const swaggerDocument = {
     info: {
         version: "1.0.0",
-        title: "Livro API",
-        description: "API para gerenciamento de Livros"
+        title: "Empréstimo API",
+        description: "API para gerenciamento de Empréstimos"
     },
-    host: "localhost:3001",
+    host: "localhost:3002",
     basePath: "/",
     schemes: ["http"],
     consumes: ["application/json"],
     produces: ["application/json"],
     securityDefinitions: {},
+    definitions: {},
     components: {
         schemas: {
-            patchBookBody: {
-                $available: false
-            },
-            bookBody: {
-                $name: "O Senhor dos Anéis",
-                $author: "J.R.R. Tolkien",
-                $available: true
+            loanBody: {
+                $user_id: 1,
+                $book_id: 1,
+                $loan_date: "2024-12-02"
             }
         }
     }
