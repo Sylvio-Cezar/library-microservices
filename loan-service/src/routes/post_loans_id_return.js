@@ -1,8 +1,7 @@
 const express = require('express');
 const { Loan } = require('../models/index');
 const router = express.Router();
-const auth = require('../services/auth.service');
-
+const bookService = require('../services/book.service');
 
 router.post('/loans/:id/return', async (req, res) => {
     const loanId = req.params.id;
@@ -21,7 +20,7 @@ router.post('/loans/:id/return', async (req, res) => {
             message: `Devolução registrada às ${loan.return_date}`,
             loan: loan.toJSON()
         });
-        auth.changeBookAvailability(loan.dataValues.book_id);
+        bookService.changeBookAvailability(loan.dataValues.book_id, true);
     } catch (error) {
         console.error('Erro ao buscar empréstimo:', error);
         res.status(500).json({ error: 'Erro interno do servidor' });

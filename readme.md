@@ -10,6 +10,7 @@
     cd library-microservices
     ```
 
+---
 ## Serviço de Usuários
 
 ### Inicialização
@@ -35,7 +36,7 @@
     ```cmd
     npm run dev
     ```
-A mensagem 'Servidor inicializado' será exibida no console indicando sucesso na execução
+A mensagem 'Servidor inicializado: http://localhost:3000/' será exibida no console indicando sucesso na execução
 
 A aplicação estará disponível com URL base: `http://localhost:3000/`
 
@@ -45,6 +46,7 @@ Após inicializado o servidor acesse a rota `/docs` para ver a documentação (c
 
 É possível verificar os parâmetros e exemplos de requisições por lá, além da possibilidade de testar os endpoints
 
+---
 ## Serviço de Livros
 
 ### Inicialização
@@ -66,11 +68,11 @@ Após inicializado o servidor acesse a rota `/docs` para ver a documentação (c
 
 ### Execução
 
-- Inicie o servidor (configurado com o nodemon) 
+- Inicie o servidor
     ```cmd
     npm run dev
     ```
-A mensagem 'Servidor inicializado' será exibida no console indicando sucesso na execução
+A mensagem 'Servidor inicializado: http://localhost:3001/' será exibida no console indicando sucesso na execução
 
 A aplicação estará disponível com URL base: `http://localhost:3001/`
 
@@ -80,6 +82,7 @@ Após inicializado o servidor acesse a rota `/docs` para ver a documentação (c
 
 É possível verificar os parâmetros e exemplos de requisições por lá, além da possibilidade de testar os endpoints
 
+---
 ## Serviço de Empréstimos
 
 ### Inicialização
@@ -101,11 +104,11 @@ Após inicializado o servidor acesse a rota `/docs` para ver a documentação (c
 
 ### Execução
 
-- Inicie o servidor (configurado com o nodemon) 
+- Inicie o servidor
     ```cmd
     npm run dev
     ```
-A mensagem 'Servidor inicializado' será exibida no console indicando sucesso na execução
+A mensagem 'Servidor inicializado: http://localhost:3002/' será exibida no console indicando sucesso na execução
 
 A aplicação estará disponível com URL base: `http://localhost:3002/`
 

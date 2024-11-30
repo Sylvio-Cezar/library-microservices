@@ -10,6 +10,9 @@ router.post('/users', async (req, res) => {
         return res.status(201).send(newUser);
     } catch (error) {
         console.error('Erro ao cadastrar usuário:', error);
+        if (error.name === 'SequelizeUniqueConstraintError'){
+            return res.status(400).json({ error: `Usuário com esse CPF já foi cadastrado` });
+        }
         return res.status(400).json({ error: error.message });
     }
 
